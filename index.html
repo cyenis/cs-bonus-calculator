@@ -1,69 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Customer Support Bonus Calculator</title>
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container mt-5">
-      <h1 class="text-center mb-4">Customer Support Bonus Calculator</h1>
 
-      <form class="form-inline justify-content-center mb-4">
-        <div class="form-group mr-4">
-          <label for="closedChats" class="mr-2">Closed Chats:</label>
-          <input
-            type="number"
-            id="closedChats"
-            name="closedChats"
-            class="form-control"
-            required
-          />
-        </div>
+<head>
+  <title>Customer Support Bonus Calculator</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png"
+    href="https://storage.googleapis.com/epicweb-holded-com/assets/png/holded_favicon_logo-1-78H5TVN4SYG71ugZ6eJGdq.png" />
+</head>
 
-        <div class="form-group mr-4">
-          <label for="csat" class="mr-2">CSAT (%):</label>
-          <input
-            type="number"
-            id="csat"
-            name="csat"
-            class="form-control"
-            min="0"
-            max="100"
-            step="0.1"
-            required
-          />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Calculate Bonus</button>
-      </form>
-
-      <div class="text-center">
-        <p id="bonus"></p>
-        <img id="gif" src="" alt="" />
+<body>
+  <header>
+    <img id="holded-logo"
+      src="https://storage.googleapis.com/epicweb-holded-com/assets/svg/logo-3R9YNdkVsY1DB6MTBxH7XV.svg"
+      alt="Holded logo" />
+  </header>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Customer Support Bonus Calculator</h1>
+    <p class="text-center">To qualify for a bonus as a team member, you need to have closed more than 700 chats per
+      month and have a satisfaction rate of 90% or higher.
+    </p>
+    <p class="text-center">Team leads are expected to dedicate only 70% of their time to
+      chats, with the rest of their time dedicated to managing their team.</p>
+    <form class="form-inline justify-content-center mb-4">
+      <div class="form-group mr-4">
+        <label for="closedChats" class="mr-2">Closed Chats:</label>
+        <input type="number" id="closedChats" name="closedChats" class="form-control" required />
       </div>
-    </div>
 
-    <!-- Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js"></script>
-  </body>
-</html>
+      <div class="form-group mr-4">
+        <label for="csat" class="mr-2">CSAT (%):</label>
+        <input type="number" id="csat" name="csat" class="form-control" min="0" max="100" step="0.1" required />
+      </div>
+
+      <div class="form-group mr-4">
+        <label for="position" class="mr-2">Position:</label>
+        <select id="position" name="position" class="form-control" required>
+          <option value="teamMember">Team Member</option>
+          <option value="teamLead">Team Lead</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Calculate Bonus</button>
+    </form>
+
+    <div class="text-center">
+      <p id="bonus"></p>
+      <img id="gif" src="" alt="" />
+    </div>
+  </div>
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="script.js"></script>

@@ -1,15 +1,36 @@
-#gif {
+#bonus {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 1em;
+  }
+  
+  #gif {
     display: none;
     width: 300px;
     height: 300px;
     margin: 2em auto;
   }
   
-
-
-  #bonus {
-    font-size: 2em;
-    font-weight: bold;
+  header {
+    background-color: #fff;
+    padding: 1em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  #holded-logo {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
     margin-bottom: 1em;
+  }
+  
+  .container {
+    max-width: 90%;
+    margin: 0 auto;
   }
   
