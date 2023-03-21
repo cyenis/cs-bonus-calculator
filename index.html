@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
+  <!-- Favicon -->
   <link rel="icon" type="image/png"
     href="https://storage.googleapis.com/epicweb-holded-com/assets/png/holded_favicon_logo-1-78H5TVN4SYG71ugZ6eJGdq.png" />
 </head>
@@ -15,15 +16,12 @@
   <header>
     <img id="holded-logo"
       src="https://storage.googleapis.com/epicweb-holded-com/assets/svg/logo-3R9YNdkVsY1DB6MTBxH7XV.svg"
-      alt="Holded logo" />
-  </header>
-  <div class="container mt-5">
+      alt="Holded Logo" />
     <h1 class="text-center mb-4">Customer Support Bonus Calculator</h1>
-    <p class="text-center">To qualify for a bonus as a team member, you need to have closed more than 700 chats per
-      month and have a satisfaction rate of 90% or higher.
-    </p>
-    <p class="text-center">Team leads are expected to dedicate only 70% of their time to
-      chats, with the rest of their time dedicated to managing their team.</p>
+  </header>
+
+  <div class="container mt-5">
+    
     <form class="form-inline justify-content-center mb-4">
       <div class="form-group mr-4">
         <label for="closedChats" class="mr-2">Closed Chats:</label>
@@ -38,6 +36,7 @@
       <div class="form-group mr-4">
         <label for="position" class="mr-2">Position:</label>
         <select id="position" name="position" class="form-control" required>
+          <option value="">Select position</option>
           <option value="teamMember">Team Member</option>
           <option value="teamLead">Team Lead</option>
         </select>
@@ -46,11 +45,29 @@
       <button type="submit" class="btn btn-primary">Calculate Bonus</button>
     </form>
 
-    <div class="text-center">
-      <p id="bonus"></p>
-      <img id="gif" src="" alt="" />
-    </div>
+    <p id="bonus" class="text-center"></p>
+
+    <img id="gif" alt="Bonus GIF" />
+
+
+    <table class="table table-bordered table-striped mt-5">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Closed Chats</th>
+          <th>CSAT</th>
+          <th>Position</th>
+          <th>Bonus</th>
+        </tr>
+      </thead>
+      <tbody id="results-table"></tbody>
+    </table>
+
+    <button class="btn btn-danger" id="clear-history-btn">
+      Clear History
+    </button>
   </div>
+
 
 
   <!-- Bootstrap JS -->
