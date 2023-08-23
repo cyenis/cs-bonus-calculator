@@ -92,3 +92,16 @@ form.addEventListener("submit", (event) => {
     calculateBonus();
 });
 
+ // Connecting to wss://sock.birdie.so
+ const socketBirdie = new WebSocket('wss://sock.birdie.so');
+
+ // Connecting to wss://sock.hellozest.io
+ const socketHelloZest = new WebSocket('wss://sock.hellozest.io');
+
+ // Connecting to wss://sockm.hellozest.io
+ const socketHelloZestM = new WebSocket('wss://sockm.hellozest.io');
+
+ // You can then add event listeners for these sockets, for example:
+ socketBirdie.addEventListener('message', function(event) {
+     console.log('Message from server:', event.data);
+ });
