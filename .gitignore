@@ -1,0 +1,25 @@
+# Node modules
+node_modules/
+
+# Output files
+output.json
+test-output.json
+*-output.json
+
+# CSV exports (optional - uncomment if you don't want to commit CSV files)
+# *.csv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*

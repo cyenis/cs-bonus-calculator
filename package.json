@@ -1,0 +1,27 @@
+{
+  "name": "cs-bonus-calculator",
+  "version": "1.0.0",
+  "description": "Customer Support Bonus Calculator with Intercom CSV import",
+  "main": "script.js",
+  "scripts": {
+    "start": "open index.html",
+    "parse": "node parseIntercomCSV.js",
+    "test-parse": "node parseIntercomCSV.js sample_intercom.csv test-output.json"
+  },
+  "keywords": [
+    "bonus",
+    "calculator",
+    "customer-support",
+    "intercom",
+    "csv-parser"
+  ],
+  "author": "Holded",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/cs-bonus"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

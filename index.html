@@ -2,14 +2,11 @@
 <html>
 
 <head>
-  <title>Customer Support Bonus Calculator</title>
+  <title>Customer Support Performance Board for Intercom</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
-  <!-- Favicon -->
-  <link rel="icon" type="image/png"
-    href="https://storage.googleapis.com/epicweb-holded-com/assets/png/holded_favicon_logo-1-78H5TVN4SYG71ugZ6eJGdq.png" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
@@ -17,58 +14,622 @@
 
 <body>
   <header>
-    <img id="holded-logo"
-      src="https://storage.googleapis.com/epicweb-holded-com/assets/svg/logo-3R9YNdkVsY1DB6MTBxH7XV.svg"
-      alt="Holded Logo" />
-    <h1 class="text-center mb-4">Customer Support Bonus Calculator</h1>
+    <h1 class="text-center mb-4">Customer Support Performance Board for Intercom</h1>
+
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+      <button class="nav-item active" data-tab="calculator">
+        <span class="nav-icon">🧮</span>
+        <span class="nav-label">Calculator</span>
+      </button>
+      <button class="nav-item" data-tab="documentation">
+        <span class="nav-icon">📖</span>
+        <span class="nav-label">Documentation</span>
+      </button>
+      <button class="nav-item" data-tab="podium">
+        <span class="nav-icon">🏆</span>
+        <span class="nav-label">Top Performers</span>
+      </button>
+    </nav>
   </header>
 
   <div class="container mt-5">
 
-    <form class="form-inline justify-content-center mb-4">
-      <div class="form-group mr-4">
-        <label for="closedChats" class="mr-2">Closed Chats:</label>
-        <input type="number" id="closedChats" name="closedChats" class="form-control" required />
+    <!-- Documentation Section -->
+    <div id="documentation-section" class="tab-content" style="display: none;">
+    <div class="documentation-card">
+      <h2 class="doc-title">📖 How the Bonus System Works</h2>
+
+      <div class="doc-section">
+        <h3 class="doc-section-title">📋 Basic Rules</h3>
+        <ul class="doc-list">
+          <li><strong>Minimum Requirement:</strong> You must close at least <strong>500 chats</strong> to qualify for any bonus payment</li>
+          <li><strong>Maximum Bonus Cap:</strong> The maximum bonus you can receive is <strong>€700.00</strong> per period, regardless of volume or CSAT</li>
+          <li><strong>Volume Bonus Calculation:</strong> Each chat you close earns a bonus based on tiered rates. The rate increases as you reach higher chat volumes</li>
+          <li><strong>CSAT Multiplier:</strong> Your CSAT score directly multiplies your base volume bonus:
+            <ul>
+              <li>85% or below → <strong>0x multiplier</strong> (no bonus paid, regardless of chat volume)</li>
+              <li>86-89% → <strong>Reduced multiplier</strong> (between 0.1x and 0.9x)</li>
+              <li>90% → <strong>1.0x multiplier</strong> (you receive 100% of your volume bonus)</li>
+              <li>91-100% → <strong>Enhanced multiplier</strong> (between 1.1x and 2.0x)</li>
+            </ul>
+          </li>
+          <li><strong>How It Works:</strong> First, we calculate your base volume bonus using the tiered rates. Then we multiply it by your CSAT multiplier. Finally, we cap the result at €700 maximum</li>
+        </ul>
       </div>
 
-      <div class="form-group mr-4">
-        <label for="csat" class="mr-2">CSAT (%):</label>
-        <input type="number" id="csat" name="csat" class="form-control" min="0" max="100" step="0.1" required />
+      <div class="doc-section">
+        <h3 class="doc-section-title">💰 Bonus Rate Tiers</h3>
+        <div class="tiers-grid">
+          <div class="tier-box">
+            <div class="tier-range">500-599 chats</div>
+            <div class="tier-rate">€0.50/chat</div>
+          </div>
+          <div class="tier-box">
+            <div class="tier-range">600-699 chats</div>
+            <div class="tier-rate">€1.00/chat</div>
+          </div>
+          <div class="tier-box">
+            <div class="tier-range">700-799 chats</div>
+            <div class="tier-rate">€1.50/chat</div>
+          </div>
+          <div class="tier-box">
+            <div class="tier-range">800-899 chats</div>
+            <div class="tier-rate">€2.00/chat</div>
+          </div>
+          <div class="tier-box">
+            <div class="tier-range">900-999 chats</div>
+            <div class="tier-rate">€2.50/chat</div>
+          </div>
+          <div class="tier-box tier-box-max">
+            <div class="tier-range">1000+ chats</div>
+            <div class="tier-rate">€3.00/chat</div>
+          </div>
+        </div>
       </div>
 
-      <div class="form-group mr-4">
-        <label for="position" class="mr-2">Position:</label>
-        <select id="position" name="position" class="form-control" required>
-          <option value="">Select position</option>
-          <option value="teamMember">Team Member</option>
-          <option value="teamLead">Team Lead</option>
-        </select>
+      <div class="doc-section">
+        <h3 class="doc-section-title">🧮 Calculation Examples</h3>
+
+        <div class="example-box">
+          <div class="example-header">
+            <span class="example-title">Example 1: Meeting the Minimum</span>
+            <span class="example-badge">Qualified</span>
+          </div>
+          <div class="example-stats">
+            <span><strong>Closed Chats:</strong> 550</span>
+            <span><strong>CSAT:</strong> 92%</span>
+          </div>
+          <div class="example-calc">
+            <div class="calc-line">Chats 500-549: 50 × €0.50 = €25.00</div>
+            <div class="calc-line">Base Bonus: €25.00</div>
+            <div class="calc-line">CSAT Multiplier: 1.20x (92% CSAT)</div>
+            <div class="calc-line final">Final Bonus: €25.00 × 1.20 = <strong>€30.00</strong></div>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <div class="example-header">
+            <span class="example-title">Example 2: Crossing Tiers</span>
+            <span class="example-badge">Qualified</span>
+          </div>
+          <div class="example-stats">
+            <span><strong>Closed Chats:</strong> 650</span>
+            <span><strong>CSAT:</strong> 95%</span>
+          </div>
+          <div class="example-calc">
+            <div class="calc-line">Chats 500-599: 100 × €0.50 = €50.00</div>
+            <div class="calc-line">Chats 600-649: 50 × €1.00 = €50.00</div>
+            <div class="calc-line">Base Bonus: €100.00</div>
+            <div class="calc-line">CSAT Multiplier: 1.50x (95% CSAT)</div>
+            <div class="calc-line final">Final Bonus: €100.00 × 1.50 = <strong>€150.00</strong></div>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <div class="example-header">
+            <span class="example-title">Example 3: CSAT Below 90%</span>
+            <span class="example-badge example-badge-reduced">Reduced</span>
+          </div>
+          <div class="example-stats">
+            <span><strong>Closed Chats:</strong> 600</span>
+            <span><strong>CSAT:</strong> 87%</span>
+          </div>
+          <div class="example-calc">
+            <div class="calc-line">Chats 500-599: 100 × €0.50 = €50.00</div>
+            <div class="calc-line">Base Bonus: €50.00</div>
+            <div class="calc-line">CSAT Multiplier: 0.70x (87% CSAT)</div>
+            <div class="calc-line final">Final Bonus: €50.00 × 0.70 = <strong>€35.00</strong></div>
+            <div class="warning-note" style="background: #fffaf0; color: #dd6b20; border-left: 4px solid #ed8936;">
+              💡 CSAT between 86-89% reduces your bonus. Every point below 90% costs you 10% of your base bonus
+            </div>
+          </div>
+        </div>
+
+        <div class="example-box">
+          <div class="example-header">
+            <span class="example-title">Example 4: Good Performance at 90% CSAT</span>
+            <span class="example-badge example-badge-gold">High Earner</span>
+          </div>
+          <div class="example-stats">
+            <span><strong>Closed Chats:</strong> 800</span>
+            <span><strong>CSAT:</strong> 90%</span>
+          </div>
+          <div class="example-calc">
+            <div class="calc-line">Chats 500-599: 100 × €0.50 = €50.00</div>
+            <div class="calc-line">Chats 600-699: 100 × €1.00 = €100.00</div>
+            <div class="calc-line">Chats 700-799: 100 × €1.50 = €150.00</div>
+            <div class="calc-line">Base Bonus: €300.00</div>
+            <div class="calc-line">CSAT Multiplier: 1.00x (90% CSAT)</div>
+            <div class="calc-line">Calculated Bonus: €300.00 × 1.00 = €300.00</div>
+            <div class="calc-line final">Final Bonus: <strong>€300.00</strong> (within cap)</div>
+          </div>
+        </div>
+
+        <div class="example-box" style="background: linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%); border-color: #f39c12;">
+          <div class="example-header">
+            <span class="example-title">Example 5: Hitting the Maximum Cap</span>
+            <span class="example-badge" style="background: #f39c12;">Capped</span>
+          </div>
+          <div class="example-stats">
+            <span><strong>Closed Chats:</strong> 1000</span>
+            <span><strong>CSAT:</strong> 95%</span>
+          </div>
+          <div class="example-calc">
+            <div class="calc-line">Chats 500-599: 100 × €0.50 = €50.00</div>
+            <div class="calc-line">Chats 600-699: 100 × €1.00 = €100.00</div>
+            <div class="calc-line">Chats 700-799: 100 × €1.50 = €150.00</div>
+            <div class="calc-line">Chats 800-899: 100 × €2.00 = €200.00</div>
+            <div class="calc-line">Chats 900-999: 100 × €2.50 = €250.00</div>
+            <div class="calc-line">Base Bonus: €750.00</div>
+            <div class="calc-line">CSAT Multiplier: 1.50x (95% CSAT)</div>
+            <div class="calc-line">Calculated Bonus: €750.00 × 1.50 = €1,125.00</div>
+            <div class="calc-line final" style="color: #d68910;">Final Bonus: <strong>€700.00</strong> (capped at maximum)</div>
+            <div class="warning-note" style="background: #fef5e7; color: #d68910; border-left: 4px solid #f39c12;">
+              🏆 You've hit the maximum bonus cap! €1,125.00 calculated, but capped at €700.00
+            </div>
+          </div>
+        </div>
+
+        <div class="example-box example-box-warning">
+          <div class="example-header">
+            <span class="example-title">Example 6: Below CSAT Threshold</span>
+            <span class="example-badge example-badge-warning">Not Qualified</span>
+          </div>
+          <div class="example-stats">
+            <span><strong>Closed Chats:</strong> 750</span>
+            <span><strong>CSAT:</strong> 84%</span>
+          </div>
+          <div class="example-calc">
+            <div class="calc-line">Chats 500-599: 100 × €0.50 = €50.00</div>
+            <div class="calc-line">Chats 600-699: 100 × €1.00 = €100.00</div>
+            <div class="calc-line">Chats 700-749: 50 × €1.50 = €75.00</div>
+            <div class="calc-line">Base Bonus: €225.00</div>
+            <div class="calc-line">CSAT Multiplier: 0.0x (84% is ≤ 85% threshold)</div>
+            <div class="calc-line final warning-text">Final Bonus: <strong>€0.00</strong></div>
+            <div class="warning-note">⚠️ CSAT must be above 85% to receive any bonus. Even with high chat volume, 85% or below = €0</div>
+          </div>
+        </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Calculate Bonus</button>
-    </form>
+      <div class="doc-section">
+        <h3 class="doc-section-title">📊 CSAT Multiplier Formula</h3>
+        <div class="formula-box">
+          <div class="formula-title">For CSAT above 85%:</div>
+          <div class="formula-code">Multiplier = 1 - ((90 - CSAT) / 10)</div>
+          <div class="formula-note">
+            This means every point above 90% adds 0.1x to your multiplier, and every point below 90% subtracts 0.1x
+          </div>
+        </div>
+      </div>
 
-    <p id="bonus" class="text-center"></p>
+      <div class="doc-section">
+        <h3 class="doc-section-title">💡 Tips to Maximize Your Bonus</h3>
+        <ul class="doc-list">
+          <li>📈 <strong>Aim for higher tiers:</strong> The rate per chat increases by €0.50 at each tier (from €0.50 to €3.00)</li>
+          <li>⭐ <strong>Never drop below 86% CSAT:</strong> One point below 86% means zero bonus, regardless of volume</li>
+          <li>🎯 <strong>Target 90% CSAT minimum:</strong> Below 90% reduces your bonus (87% = only 70% of base bonus)</li>
+          <li>🚀 <strong>Balance is key:</strong> Quality matters as much as quantity. Higher CSAT can multiply your earnings significantly</li>
+          <li>💰 <strong>Reach tier milestones:</strong> Try to hit 600, 700, 800, 900, or 1000 chats to unlock higher rates</li>
+          <li>✨ <strong>Go for excellence:</strong> 95%+ CSAT multiplies your bonus by 1.5x or more (98% = 1.8x bonus!)</li>
+          <li>🏆 <strong>Know the cap:</strong> The maximum bonus is €700. You'll hit the cap around 1000 chats with 95% CSAT or similar high-volume/high-CSAT combinations</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+    <!-- End Documentation Section -->
 
-    <img id="gif" alt="Bonus GIF" />
+    <!-- Calculator Section -->
+    <div id="calculator-section" class="tab-content" style="display: block;">
+
+    <!-- Quick Actions Bar -->
+    <div id="quick-actions-bar" class="quick-actions-bar" style="display: none;">
+      <div class="actions-left">
+        <h2 class="actions-title">Bonus Dashboard</h2>
+      </div>
+      <div class="actions-right">
+        <button class="btn-modern btn-primary-modern" id="toggle-podium-btn-top">
+          <span class="btn-icon">🏆</span>
+          <span class="btn-text">Top Performers</span>
+        </button>
+        <button class="btn-modern btn-success-modern" id="export-btn-top">
+          <span class="btn-icon">📊</span>
+          <span class="btn-text">Export CSV</span>
+        </button>
+        <button class="btn-modern btn-danger-modern" id="clear-history-btn-top">
+          <span class="btn-icon">🗑️</span>
+          <span class="btn-text">Clear History</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Summary Statistics Dashboard -->
+    <div id="stats-dashboard" class="stats-dashboard" style="display: none;">
+      <div class="stat-card">
+        <div class="stat-label">Total Bonuses</div>
+        <div class="stat-value" id="total-bonuses">EUR 0.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Team Members</div>
+        <div class="stat-value" id="total-team-members">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Chats Closed</div>
+        <div class="stat-value" id="total-chats">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Team Objective</div>
+        <div class="stat-value" id="team-objective">0 chats</div>
+        <div class="stat-helper">(Team × 500)</div>
+      </div>
+      <div class="stat-card" id="goal-achievement-card">
+        <div class="stat-label">Goal Achievement</div>
+        <div class="stat-value" id="goal-achievement">0 chats</div>
+        <div class="stat-helper" id="goal-percentage">0%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Average Team CSAT</div>
+        <div class="stat-value" id="avg-csat">0%</div>
+        <div class="stat-helper">Goal: 92%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Average Bonus</div>
+        <div class="stat-value" id="avg-bonus">EUR 0.00</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Avg Cost per Chat</div>
+        <div class="stat-value" id="avg-cost-per-chat">€0.00</div>
+        <div class="stat-helper">(Salary + Bonus) / Chats</div>
+      </div>
+    </div>
+
+    <!-- Top Performers Podium -->
+    <div id="podium-section" class="podium-section" style="display: none;">
+      <div class="podium-header">
+        <div class="podium-header-left">
+          <h2 class="podium-main-title">🏆 Top Performers</h2>
+          <p class="podium-subtitle">Ranked by Performance Score (CSAT × Chats) • Min: 88% CSAT & 50+ Chats</p>
+        </div>
+        <div class="podium-header-right">
+          <button class="btn-modern btn-secondary-modern" id="manage-exclusions-btn" title="Exclude people from rankings">
+            <span class="btn-icon">⚙️</span>
+          </button>
+          <button class="btn-modern btn-secondary-modern" id="close-podium-btn" title="Close podium">
+            <span class="btn-icon">✕</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Exclusions Panel -->
+      <div id="exclusions-panel" class="exclusions-panel" style="display: none;">
+        <h3 class="exclusions-title">Exclude from Rankings</h3>
+        <p class="exclusions-subtitle">Select people to exclude from the podium (e.g., managers)</p>
+        <div id="exclusions-list" class="exclusions-list"></div>
+        <div class="button-group" style="margin-top: 1em;">
+          <button class="btn-modern btn-success-modern" id="save-exclusions-btn">
+            <span class="btn-icon">✓</span>
+            <span class="btn-text">Save</span>
+          </button>
+          <button class="btn-modern btn-secondary-modern" id="cancel-exclusions-btn">
+            <span class="btn-text">Cancel</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="podium-container">
+        <!-- 2nd Place -->
+        <div class="podium-position podium-second" id="podium-2">
+          <div class="podium-rank">
+            <div class="medal silver">🥈</div>
+            <div class="rank-label">2nd</div>
+          </div>
+          <div class="podium-content">
+            <div class="performer-name" id="performer-2-name">-</div>
+            <div class="performer-stats">
+              <div class="stat-item">
+                <span class="stat-icon">💬</span>
+                <span id="performer-2-chats">-</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">⭐</span>
+                <span id="performer-2-csat">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="podium-base podium-base-silver">
+            <div class="base-height">2</div>
+          </div>
+        </div>
+
+        <!-- 1st Place -->
+        <div class="podium-position podium-first" id="podium-1">
+          <div class="podium-rank">
+            <div class="medal gold">🏆</div>
+            <div class="rank-label">1st</div>
+          </div>
+          <div class="podium-content">
+            <div class="performer-name" id="performer-1-name">-</div>
+            <div class="performer-stats">
+              <div class="stat-item">
+                <span class="stat-icon">💬</span>
+                <span id="performer-1-chats">-</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">⭐</span>
+                <span id="performer-1-csat">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="podium-base podium-base-gold">
+            <div class="base-height">1</div>
+          </div>
+        </div>
+
+        <!-- 3rd Place -->
+        <div class="podium-position podium-third" id="podium-3">
+          <div class="podium-rank">
+            <div class="medal bronze">🥉</div>
+            <div class="rank-label">3rd</div>
+          </div>
+          <div class="podium-content">
+            <div class="performer-name" id="performer-3-name">-</div>
+            <div class="performer-stats">
+              <div class="stat-item">
+                <span class="stat-icon">💬</span>
+                <span id="performer-3-chats">-</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-icon">⭐</span>
+                <span id="performer-3-csat">-</span>
+              </div>
+            </div>
+          </div>
+          <div class="podium-base podium-base-bronze">
+            <div class="base-height">3</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CSV Upload Section -->
+    <div class="csv-upload-card">
+      <h2 class="calculator-title">📤 Bulk Import from CSV</h2>
+      <p class="csv-description">Upload an Intercom CSV export to calculate bonuses for your entire team</p>
+
+      <div class="upload-area" id="upload-area">
+        <input type="file" id="csv-file-input" accept=".csv" style="display: none;" />
+        <div class="upload-icon">📁</div>
+        <div class="upload-text">
+          <strong>Click to upload</strong> or drag and drop
+        </div>
+        <div class="upload-hint">Intercom CSV export (max 10MB)</div>
+      </div>
+
+      <div class="csv-preview-section" id="csv-preview-section" style="display: none;">
+        <h3 class="preview-title">Map Your Columns</h3>
+
+        <div class="mapping-info">
+          <p><strong>File:</strong> <span id="file-name"></span></p>
+          <p><strong>Total rows:</strong> <span id="row-count">0</span></p>
+        </div>
+
+        <!-- Column Mapping -->
+        <div class="column-mapper" id="column-mapper">
+          <div class="mapper-row">
+            <label class="mapper-label">Agent Name Column:</label>
+            <select id="name-column" class="mapper-select"></select>
+          </div>
+          <div class="mapper-row">
+            <label class="mapper-label">Closed Chats Column:</label>
+            <select id="chats-column" class="mapper-select"></select>
+          </div>
+          <div class="mapper-row">
+            <label class="mapper-label">CSAT Score Column:</label>
+            <select id="csat-column" class="mapper-select"></select>
+          </div>
+        </div>
+
+        <!-- Preview -->
+        <div class="data-preview" id="data-preview"></div>
+
+        <!-- Actions -->
+        <div class="button-group">
+          <button type="button" class="btn-modern btn-success-modern" id="calculate-all-btn">
+            <span class="btn-icon">🧮</span>
+            <span class="btn-text">Calculate All Bonuses</span>
+          </button>
+          <button type="button" class="btn-modern btn-danger-modern" id="cancel-upload-btn">
+            <span class="btn-icon">✕</span>
+            <span class="btn-text">Cancel</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bonus Calculator Card -->
+    <div class="calculator-card">
+      <h2 class="calculator-title">Calculate Single Bonus</h2>
+
+      <form id="bonus-form">
+        <div class="form-grid">
+          <div class="form-group-modern">
+            <label for="agentName" class="modern-label">
+              Agent Name
+              <span class="optional-badge">Optional</span>
+            </label>
+            <input type="text" id="agentName" name="agentName" class="modern-input" placeholder="Enter your name" />
+          </div>
+
+          <div class="form-group-modern">
+            <label for="closedChats" class="modern-label">
+              Closed Chats
+              <span class="info-icon" title="Minimum 500 chats required to qualify">ℹ️</span>
+            </label>
+            <input type="number" id="closedChats" name="closedChats" class="modern-input" placeholder="500" required />
+            <div class="helper-text" id="chats-helper">Minimum 500 chats to qualify for bonus</div>
+          </div>
+
+          <div class="form-group-modern">
+            <label for="csat" class="modern-label">
+              CSAT Score (%)
+              <span class="info-icon" title="≤85% = 0x (no bonus), 90% = 1.0x, 95% = 1.5x, 100% = 2.0x">ℹ️</span>
+            </label>
+            <input type="number" id="csat" name="csat" class="modern-input" min="0" max="100" step="0.1" placeholder="90.0" required />
+            <div class="helper-text" id="csat-helper">CSAT multiplies volume bonus (≤85% = 0x, 90% = 1.0x, 95% = 1.5x)</div>
+          </div>
+        </div>
+
+        <!-- Real-time Preview -->
+        <div class="preview-section" id="preview-section" style="display: none;">
+          <div class="preview-header">
+            <h3>Bonus Preview</h3>
+            <div class="preview-amount" id="preview-amount">EUR 0.00</div>
+          </div>
+
+          <!-- Progress Indicators -->
+          <div class="tier-progress">
+            <div class="tier-label">Next Milestone</div>
+            <div class="progress-bar-container">
+              <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <div class="tier-info" id="tier-info">Reach 600 chats for +10% accelerator!</div>
+          </div>
+
+          <!-- Breakdown -->
+          <div class="bonus-breakdown">
+            <div class="breakdown-item">
+              <span class="breakdown-label">Base Volume Bonus:</span>
+              <span class="breakdown-value" id="preview-chat-bonus">EUR 0.00</span>
+            </div>
+            <div class="breakdown-item">
+              <span class="breakdown-label">CSAT Multiplier Effect:</span>
+              <span class="breakdown-value" id="preview-csat-bonus">EUR 0.00</span>
+            </div>
+            <div class="breakdown-item" id="csat-multiplier-display" style="font-size: 0.9em; color: #718096;">
+              <span class="breakdown-label">CSAT Multiplier:</span>
+              <span class="breakdown-value" id="preview-csat-multiplier">1.0x</span>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-modern btn-primary-modern">
+          <span class="btn-text">Calculate & Save</span>
+          <span class="btn-icon">→</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Result Display -->
+    <div id="result-card" class="result-card" style="display: none;">
+      <div class="result-icon">🎉</div>
+      <p id="bonus" class="result-bonus"></p>
+      <div id="quote" class="quote-container-modern"></div>
+    </div>
 
 
-    <table class="table table-bordered table-striped mt-5">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Closed Chats</th>
-          <th>CSAT</th>
-          <th>Position</th>
-          <th>Bonus</th>
-        </tr>
-      </thead>
-      <tbody id="results-table"></tbody>
-    </table>
+    <!-- History Section -->
+    <div class="history-section">
+      <div class="history-header">
+        <div>
+          <h2 class="history-title">Calculation History</h2>
+          <p class="history-subtitle">Click any row to view calculation details</p>
+        </div>
+        <!-- Legacy buttons kept for mobile fallback - hidden on desktop -->
+        <div class="button-group button-group-mobile-only">
+          <button class="btn-modern btn-primary-modern" id="toggle-podium-btn">
+            <span class="btn-icon">🏆</span>
+            <span class="btn-text">Top Performers</span>
+          </button>
+          <button class="btn-modern btn-success-modern" id="export-btn">
+            <span class="btn-icon">📊</span>
+            <span class="btn-text">Export</span>
+          </button>
+          <button class="btn-modern btn-danger-modern" id="clear-history-btn">
+            <span class="btn-icon">🗑️</span>
+            <span class="btn-text">Clear</span>
+          </button>
+        </div>
+      </div>
 
-    <button class="btn btn-danger" id="clear-history-btn">
-      Clear History
-    </button>
+      <div class="table-container">
+        <table class="modern-table" id="results-table-container">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Agent Name</th>
+              <th>Closed Chats</th>
+              <th>CSAT</th>
+              <th>Bonus</th>
+              <th>Cost/Chat</th>
+            </tr>
+          </thead>
+          <tbody id="results-table"></tbody>
+        </table>
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">📋</div>
+          <div class="empty-text">No calculations yet</div>
+          <div class="empty-subtext">Start by calculating your first bonus above</div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- End Calculator Section -->
+
+    <!-- Podium Section Wrapper -->
+    <div id="podium-section-wrapper" class="tab-content" style="display: none;">
+      <div class="podium-intro-card">
+        <h2 class="podium-intro-title">🏆 Top Performers Leaderboard</h2>
+        <p class="podium-intro-text">View the highest performing team members ranked by their performance score (CSAT × Total Chats)</p>
+        <div class="podium-requirements">
+          <h3>Qualification Requirements:</h3>
+          <ul>
+            <li>Minimum <strong>88% average CSAT</strong></li>
+            <li>At least <strong>50 total closed chats</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Podium will be injected here by moving the existing podium-section -->
+    </div>
+    <!-- End Podium Section Wrapper -->
+
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Calculation Details Modal -->
+  <div id="calculation-modal" class="calculation-modal" style="display: none;">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">💰 Calculation Breakdown</h2>
+        <button class="modal-close-btn" id="modal-close-btn">✕</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Content will be dynamically inserted -->
+      </div>
+    </div>
   </div>
 
   <!-- Bootstrap JS -->
